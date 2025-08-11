@@ -1,0 +1,48 @@
+---
+import ColorCard from '@/components/islands/ColorCard';
+import type { Color } from '@/utils/colorUtils';
+
+interface Props {
+    id: string;
+    icon: string;
+    title: string;
+    description?: string;
+    contentId: string;
+    cardCount: number;
+}
+
+const { id, icon, title, description, contentId, cardCount } = Astro.props;
+
+// Create black color object for prerendering
+const blackColor: Color = {
+    hex: '#000000',
+    rgb: { r: 0, g: 0, b: 0 },
+    hsl: { h: 0, s: 0, l: 0 },
+    name: 'Negro'
+};
+
+// Generate array of black colors for the specified card count
+const blackColors = Array(cardCount).fill(blackColor);
+---
+
+<section id={id} class="animate-slide-up">
+    <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl" role="img" aria-label={title}>{icon}</span>
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">
+            {title}
+        </h2>
+    </div>
+    {
+        description && (
+            <p class="text-gray-600 dark:text-gray-400 mb-4">{description}</p>
+        )
+    }
+    <div
+        id={contentId}
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 w-full"
+    >
+        {blackColors.map((color) => (
+            <ColorCard color={color} />
+        ))}
+    </div>
+</section>

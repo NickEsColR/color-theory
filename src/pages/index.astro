@@ -1,0 +1,27 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import ThemeToggle from "@/components/ui/ThemeToggle.astro";
+import Header from "@/components/ui/Header.astro";
+import ColorPicker from "@/components/ColorPicker.astro";
+import ColorSection from "@/components/ColorSection.astro";
+import { sections } from "@/constants/sections";
+import Footer from "@/components/ui/Footer.astro";
+import ColorAnalysis from "@/components/islands/ColorAnalysis";
+---
+
+<Layout title="Teoría del Color - Aplicación Interactiva">
+  <ThemeToggle />
+
+  <div class="container mx-auto px-4 py-8 max-w-7xl">
+    <Header />
+    <ColorPicker />
+
+    <!-- Color Analysis Results -->
+    <div id="color-analysis" class="space-y-8">
+      {sections.map((section) => <ColorSection {...section} />)}
+    </div>
+  </div>
+
+  <Footer />
+  <ColorAnalysis client:load />
+</Layout>

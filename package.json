@@ -1,0 +1,30 @@
+{
+  "name": "color-theory-app",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "check": "biome check .",
+    "check:fix": "biome check --write ."
+  },
+  "dependencies": {
+    "@astrojs/preact": "^4.1.0",
+    "@tailwindcss/vite": "^4.1.11",
+    "astro": "^5.12.9",
+    "preact": "^10.27.0",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@biomejs/biome": "^2.1.4",
+    "typescript": "^5.9.2"
+  }
+}

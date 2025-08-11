@@ -1,0 +1,37 @@
+---
+import "@/styles/global.css";
+
+export interface Props {
+	title: string;
+	description?: string;
+}
+
+const {
+	title,
+	description = "Aplicación interactiva de teoría del color para explorar armonías cromáticas",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 font-sans">
+    <slot />
+    
+    <!-- Toast notification for copy feedback -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-full opacity-0 transition-all duration-300 z-50">
+      ¡Copiado al portapapeles!
+    </div>
+  </body>
+</html>
