@@ -10,6 +10,10 @@ const {
 	title,
 	description = "Aplicación interactiva de teoría del color para explorar armonías cromáticas",
 } = Astro.props;
+
+// SEO base URLs
+const siteUrl = "https://color-chromas.netlify.app";
+const ogImageUrl = `${siteUrl}/og-image.webp`;
 ---
 
 <!doctype html>
@@ -25,6 +29,24 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
   <body class="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 font-sans">
     <slot />
